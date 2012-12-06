@@ -1,0 +1,22 @@
+<%= form_tag("/search/index", :method => :get) %>
+
+<%= label_tag :search, 'Search' %>
+
+<%= text_field_tag :search, @searching.gsub('+', ' '), :size => 35  %>
+
+
+<%= submit_tag "Tool Search" %>
+
+<% unless @git_results['repositories'].empty? %>
+  <h1>GIT</h1>
+  <% @git_results['repositories'].each do |repo| %>
+    <a href='https://github.com/<%= repo["username"] %>/<%= repo["name"] %>'> <%= repo['name'] %> </a> <br>
+  <% end %>
+<% end %>
+
+<% unless @git_results['repositories'].empty? %>
+  <h1>GOOGLE CODE</h1>
+  <% @google_code_results.each do |anchor| %>
+    <a href='http://code.google.com<%= anchor[0]['href'] %>' > <%= anchor.inner_html.gsub(/&nbsp;/, ' ') %> </a> <br>
+  <% end %>
+<% end %>
