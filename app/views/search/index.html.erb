@@ -10,13 +10,13 @@
 <% unless @git_results['repositories'].empty? %>
   <h1>GIT</h1>
   <% @git_results['repositories'].each do |repo| %>
-    <a href='https://github.com/<%= repo["username"] %>/<%= repo["name"] %>'> <%= repo['name'] %> </a> <br>
+    <a target='_blank' href='https://github.com/<%= repo["username"] %>/<%= repo["name"] %>'> <%= repo['name'] %> </a> <br>
   <% end %>
 <% end %>
 
 <% unless @git_results['repositories'].empty? %>
   <h1>GOOGLE CODE</h1>
   <% @google_code_results.each do |anchor| %>
-    <a href='http://code.google.com<%= anchor[0]['href'] %>' > <%= anchor.inner_html.gsub(/&nbsp;/, ' ') %> </a> <br>
+    <a target='_blank' href='http://code.google.com<%= anchor[0]['href'] %>' > <%= anchor.inner_html.gsub(/&nbsp;/, ' ') %> </a> <br>
   <% end %>
 <% end %>
